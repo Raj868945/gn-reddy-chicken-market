@@ -1,98 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>GN REDDY CHICKEN MARKET</title>
+  <meta name="description" content="GN Reddy Chicken Market — Fresh & Hygienic Chicken. Order via WhatsApp."/>
   <style>
-    body {
-      background: linear-gradient(white, #fff9c4);
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
+    :root{
+      --yellow:#f5c33b;
+      --dark:#222;
+      --muted:#666;
+      --white:#fff;
+      --card:#fff8ea;
+      --accent:#e85b3b;
+      --shadow: 0 8px 24px rgba(0,0,0,0.08);
+      --radius:14px;
+      --max:900px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background:linear-gradient(180deg,#fffaf0 0%,#fff 60%);
+      color:var(--dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
     }
 
-    header {
-      background-color: #fbc02d;
-      color: #000;
-      padding: 20px;
-      font-size: 26px;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    header{
+      background:var(--yellow);
+      padding:28px 16px;
+      text-align:center;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+    }
+    .brand{
+      max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:18px;justify-content:center;
+      flex-wrap:wrap;
+    }
+    .logo{
+      width:88px;height:88px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;
+      box-shadow:var(--shadow);flex:0 0 88px;border:6px solid rgba(0,0,0,0.03);
+    }
+    .logo .txt{font-weight:700;color:var(--accent);font-size:30px}
+    .brand h1{font-size:22px;margin:0;color:#111;letter-spacing:0.6px}
+    .brand p{margin:4px 0 0;color:var(--muted);font-size:13px}
+
+    main{max-width:var(--max);margin:18px auto;padding:16px}
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:16px;
+      box-shadow:var(--shadow);
+      margin-bottom:16px;
+      overflow:hidden;
     }
 
-    table {
-      width: 90%;
-      margin: 20px auto;
-      border-collapse: collapse;
-      background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      overflow: hidden;
+    .offer{
+      display:flex;gap:12px;align-items:center;
     }
+    .offer .flag{background:var(--accent);color:#fff;padding:10px;border-radius:10px;font-weight:700}
+    .offer .text{color:#333;font-weight:600}
 
-    th, td {
-      padding: 12px;
-      border-bottom: 1px solid #ddd;
+    .prices table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{padding:12px 10px;border-bottom:1px dashed rgba(0,0,0,0.06);font-size:15px}
+    th{color:var(--accent);text-align:left}
+    td.price{color:var(--accent);font-weight:700;text-align:right;width:130px}
+    td.actions{text-align:right;width:150px}
+
+    .btn{
+      display:inline-block;padding:10px 14px;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;
+      box-shadow:0 6px 18px rgba(232,91,59,0.18);
+      border:0;cursor:pointer;
     }
+    .btn.secondary{background:#ffcf6b;color:#111;border-radius:999px;padding:10px 18px}
+    .btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(232,91,59,0.12)}
 
-    th {
-      background-color: #fbc02d;
-      color: #000;
-      font-size: 18px;
-    }
+    .contact-list{display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--muted)}
+    .contact-list a{color:var(--dark);text-decoration:none;font-weight:600}
 
-    td {
-      font-size: 17px;
-    }
+    .footer{font-size:13px;color:var(--muted);text-align:center;padding:18px 6px}
 
-    .btn {
-      background-color: #fbc02d;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background-color: #ffd600;
-    }
-
-    footer {
-      margin-top: 25px;
-      background: #fbc02d;
-      color: #000;
-      padding: 10px;
-      font-weight: 600;
+    /* responsive */
+    @media(min-width:720px){
+      .brand{justify-content:flex-start}
+      main{padding:24px}
+      .card{display:block}
     }
   </style>
 </head>
 <body>
-  <header>🐔 GN REDDY CHICKEN MARKET</header>
 
-  <table>
-    <tr><th>Item</th><th style="text-align:right">Price</th><th></th></tr>
-    <tr><td>Live Chicken</td><td>₹150/kg</td><td><button class="btn" onclick="orderNow('Live Chicken',150)">Order</button></td></tr>
-    <tr><td>Dressed Chicken</td><td>₹230/kg</td><td><button class="btn" onclick="orderNow('Dressed Chicken',230)">Order</button></td></tr>
-    <tr><td>Skinless Chicken</td><td>₹260/kg</td><td><button class="btn" onclick="orderNow('Skinless Chicken',260)">Order</button></td></tr>
-    <tr><td>Boneless Chicken</td><td>₹510/kg</td><td><button class="btn" onclick="orderNow('Boneless Chicken',510)">Order</button></td></tr>
-    <tr><td>Drumstick</td><td>₹330/kg</td><td><button class="btn" onclick="orderNow('Drumstick',330)">Order</button></td></tr>
-    <tr><td>Liver & Gizzard</td><td>₹120/kg</td><td><button class="btn" onclick="orderNow('Liver & Gizzard',120)">Order</button></td></tr>
-    <tr><td>Eggs (Dozen)</td><td>₹80/dozen</td><td><button class="btn" onclick="orderNow('Eggs (Dozen)',80)">Order</button></td></tr>
-    <tr><td>Eggs (30 Nos.)</td><td>₹190/30pcs</td><td><button class="btn" onclick="orderNow('Eggs (30 Nos.)',190)">Order</button></td></tr>
-  </table>
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <!-- simple logo placeholder, replace with <img src="logo.png"> if you have an image -->
+        <div class="txt">GN</div>
+      </div>
+      <div style="text-align:left">
+        <h1>GN REDDY CHICKEN MARKET</h1>
+        <p>Fresh & Hygienic Chicken Everyday — Manikonda, Hyderabad</p>
+      </div>
+    </div>
+  </header>
 
-  <footer>📍 Fresh & Hygienic Chicken Available Daily</footer>
+  <main>
+    <section class="card">
+      <div class="offer">
+        <div class="flag">🔥</div>
+        <div>
+          <div style="font-weight:800">Today's Offer</div>
+          <div style="color:var(--muted);margin-top:6px">₹20 off on Boneless Chicken — hurry, limited time!</div>
+        </div>
+      </div>
+    </section>
 
-  <script>
-    function orderNow(item, price) {
-      const msg = Hi, I want to order *${item}* from GN REDDY CHICKEN MARKET. Price ₹${price}/kg. Please confirm availability.;
-      const phone = "916309565080"; // <-- তোমার WhatsApp নম্বর
-      window.open(https://wa.me/${phone}?text=${encodeURIComponent(msg)}, "_blank");
-    }
-  </script>
+    <section class="card prices" aria-labelledby="price-list">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+        <h2 id="price-list" style="margin:0;color:var(--accent)">Price List</h2>
+        <a class="btn secondary" href="tel:+919963304567">Call +91 99633 04567</a>
+      </div>
+
+      <table role="table" aria-label="Price list">
+        <thead>
+          <tr><th>Item</th><th style="text-align:right">Price (₹/kg)</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Live Chicken</td>
+            <td class="price">150</td>
+            <td class="actions"><button class="btn" onclick="orderNow('Live Chicken',150)">Order on WhatsApp</button></td>
+          </tr>
+          <tr>
+            <td>Dressed Chicken</td>
+            <td class="price">230</td>
+            <td class="actions"><button class="btn" onclick="orderNow('Dressed Chicken',230)">Order on WhatsApp</button></td>
+          </tr>
+          <tr>
+            <td>Skinless Chicken</td>
+            <td class="price">260</td>
+            <td class="actions"><button class="btn" onclick="orderNow('Skinless Chicken',260)">Order on WhatsApp</button></td>
+          </tr>
+          <tr>
+            <td>Boneless Chicken</td>
+            <td class="price">510</td>
+            <td class="actions"><button class="btn" onclick="orderNow('Boneless Chicken',510)">Order on WhatsApp</button></td>
+          </tr>
+          <tr>
+            <td>Drumstick</td>
+            <td class="price">330</td>
+            <td class="actions"><button class="btn" onclick="orderNow('Drumstick',330)">Order on WhatsApp</button></td>
+          </tr>
+          <tr>
+            <td>Liver &amp; Gizzard</td>
+            <td class="price">120</td>
+            <td class="actions"><button class="btn" onclick="orderNow('Liver & Gizzard',120)">Order on WhatsApp</button></td>
+          </tr>
+          <tr>
+            <td>Eggs (Dozen)</td>
+            <td class="price">80</td>
+            <td class="actions"><button class="btn" onclick="orderNow('Eggs (Dozen)',80)">Order on WhatsApp</button></td>
+          </tr>
+          <tr>
+            <td>Eggs (30 Nos.)</td>
+            <td class="price">190</td>
+            <td class="actions"><button class="btn" onclick="orderNow('Eggs (30 Nos.)',190)">Order on WhatsApp</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h3 style="margin:0 0 8px;color:var(--accent)">Contact & Delivery</h3>
+      <div class="contact-list">
+        <div><strong>Owner:</strong> Narender Reddy</div>
+        <div><strong>Phone:</strong> <a href="tel:+919963304567">+91 99633 04567</a></div>
+        <div><strong>WhatsApp:</strong> <a href="#" onclick="openWhatsApp(event)">Chat on WhatsApp</a></div>
+        <div><strong>Email:</strong> <a href="mailto:gnreddychickenmarket@gmail.com">gnreddychickenmarket@gmail.com</a></div>
+        <div><strong>Address:</strong> Road No:8, Beside One More Game, Alkapur Township, Manikonda - 500089</div>
+        <div style="color:var(--muted);margin-top:6px">Opening Hours: 8:00 AM – 9:00 PM (Everyday)</div>
+      </div>
+    </section>
+
+    <div class="footer">© 2025 GN REDDY CHICKEN MARKET — All rights reserved</div>
+  </main>
+
+<script>
+  // set your number here (no + or leading zero issues if using wa.me)
+  const WHATSAPP_NUMBER = "919963304567";
+  const SHOP_NAME = "GN REDDY CHICKEN MARKET";
+
+  function orderNow(item, price){
+    // exact message format requested
+    const msg = Hi, I want to order *${item}* from ${SHOP_NAME}. Price ₹${price}/kg. Please confirm availability.;
+    const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+    window.open(url, "_blank");
+  }
+
+  function openWhatsApp(e){
+    e.preventDefault();
+    const msg = Hi, I would like to know more about ${SHOP_NAME}.;
+    const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+    window.open(url, "_blank");
+  }
+</script>
+
 </body>
 </html>
